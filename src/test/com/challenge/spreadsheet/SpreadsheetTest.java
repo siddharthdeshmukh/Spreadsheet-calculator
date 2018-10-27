@@ -32,11 +32,5 @@ public class SpreadsheetTest {
     public void tearDown() {
         sp = null;
     }
-
-    @Test
-    public void testCalculateCell() throws Exception {
-        
-        
-    }
     
 }

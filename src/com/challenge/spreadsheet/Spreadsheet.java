@@ -16,8 +16,12 @@ public class Spreadsheet {
             Spreadsheet sp = new Spreadsheet();
             SpreadSheetCalculator spCalculator = new SpreadSheetCalculator();
             spCalculator.processWorkbook();
-        } catch (Exception ex) {
-            Logger.getLogger(Spreadsheet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException iae) {
+            Logger.getLogger(SpreadSheetCalculator.class.getName()).log(Level.SEVERE, iae.getMessage() + " Exiting");
+            System.exit(1);
+        } catch (CyclicDependencyException | RuntimeException ex) {
+            Logger.getLogger(SpreadSheetCalculator.class.getName()).log(Level.SEVERE, ex.getMessage() + " Exiting");
+            System.exit(1);
         }
 
     }

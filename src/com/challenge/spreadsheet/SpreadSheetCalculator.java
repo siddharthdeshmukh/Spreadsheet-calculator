@@ -19,14 +19,15 @@ public class SpreadSheetCalculator {
     int rows;
     int columns;
     Cell[][] spreadSheetCells;
-    
-    public void processWorkbook() throws CyclicDependencyException,IllegalArgumentException, Exception  {
+
+    public void processWorkbook() throws CyclicDependencyException, IllegalArgumentException, RuntimeException {
+        
         populateSpreadSheetCells();
         evaluateSpreadsheet();
         printResult();
     }
-    
-    private void populateSpreadSheetCells() throws Exception {
+
+    private void populateSpreadSheetCells() throws RuntimeException {
 
         try {
 
@@ -58,18 +59,18 @@ public class SpreadSheetCalculator {
                     row++;
                 }
             }
-        } catch (Exception e) {
-            throw new Exception("Error in populateSpreadsheetCells " + e.getMessage());
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Error in populateSpreadsheetCells ");
         }
 
     }
 
     private void evaluateSpreadsheet() throws CyclicDependencyException, IllegalArgumentException {
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                calculateCell(spreadSheetCells[i][j], null);
+                for (int j = 0; j < columns; j++) {
+                    calculateCell(spreadSheetCells[i][j], null);
+                }
             }
-        }
 
     }
 
