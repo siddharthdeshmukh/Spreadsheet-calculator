@@ -1,7 +1,5 @@
 package com.challenge.spreadsheet;
 
-import java.util.Scanner;
-
 /**
  *
  * @author siddharth
@@ -17,10 +15,8 @@ public class SpreadSheetHelper {
             int cellCol = Integer.parseInt(exp.substring(1, exp.length())) - 1;
             return spreadsheetCells[cellRow][cellCol];
         } catch (NumberFormatException e) {
-            System.out.println("Data format error occurred while evaluating Cell " + exp);
-            System.exit(1);
+            throw new NumberFormatException("Incorrect Format in cell " + exp);
         }
-        return null;
 
     }
 
